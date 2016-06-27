@@ -22,9 +22,12 @@ class bfish::Status
 
   static const char *error_message[BF_HIGHBOUND];
 
+
+
+
  private:
-  Status() = delete;
-  virtual ~Status() = delete;
+  Status(void) = delete;
+  virtual ~Status(void) = delete;
   Status(const Status&) = delete;
   Status& operator=(const Status&) = delete;
   Status(const Status&&) = delete;

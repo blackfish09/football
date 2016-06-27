@@ -2,32 +2,34 @@
 CC = g++
 ARGS = -std=c++11 -O2 -Wall -pedantic
 TARGET = ../football
-DEPS = -lSDL2 -lm -pthread
+DEPS = -lSDL2 -lm
 SRC = ./../src
 HDR = ./../include
 
 # Dynamic -----------------------------------------------------------------------
 MAIN =  main.o
 OBJS = 	Application.o					\
-	Status.o
+	Status.o 
 
+# Defines -----------------------------------------------------------------------
+DFND = -DSDL_ASSERT_LEVEL=2
 
 # Jobs --------------------------------------------------------------------------
 debug: $(OBJS) $(MAIN)
-	$(CC) -g $(ARGS) -o $(TARGET) $(OBJS) $(MAIN) $(DEPS)
+	$(CC) -g $(ARGS) $(DFND) -o $(TARGET) $(OBJS) $(MAIN) $(DEPS)
 
 release: $(OBJS) $(MAIN)
-	$(CC) $(ARGS) -o $(TARGET) $(OBJS) $(MAIN) $(DEPS)
+	$(CC) $(ARGS) $(DFND) -o $(TARGET) $(OBJS) $(MAIN) $(DEPS)
 
 clean:
 	rm $(OBJS) $(MAIN) $(TARGET)
 
 # Objects -----------------------------------------------------------------------
 main.o: $(OBJS)
-	$(CC) $(ARGS) -c $(SRC)/main.cpp
+	$(CC) $(ARGS) $(DFND) -c $(SRC)/main.cpp
 
 Application.o: $(SRC)/Application.cpp $(HDR)/Application.h
-	$(CC) $(ARGS) -c $(SRC)/Application.cpp
+	$(CC) $(ARGS) $(DFND) -c $(SRC)/Application.cpp
 
 Status.o: $(SRC)/Status.cpp $(HDR)/Status.h
-	$(CC) $(ARGS) -c $(SRC)/Status.cpp
+	$(CC) $(ARGS) $(DFND) -c $(SRC)/Status.cpp
