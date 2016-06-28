@@ -30,7 +30,6 @@ main(int argc, char *argv[])
 
   // Show some messages
   int hrs, min, sec;
-  printf("Macro = %d\n", SDL_ASSERT_LEVEL);
   printf("Application return code = %d (%s)\n", (int)_, bfish::Status::error_message[_]);
   sec = (int)ceil(difftime(time(NULL), start));
   hrs = sec / 3600;
